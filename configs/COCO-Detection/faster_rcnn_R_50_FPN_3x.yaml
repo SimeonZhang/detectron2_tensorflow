@@ -1,0 +1,11 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_object_detection/R_50_FPN_3x.pkl"
+  WEIGHTS: "coco_object_detection/R_50_FPN_3x.ckpt"
+MODEL:
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

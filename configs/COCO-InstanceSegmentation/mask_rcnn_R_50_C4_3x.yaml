@@ -1,0 +1,11 @@
+_BASE_: "../Base-RCNN-C4.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_instance_segmentation/R_50_C4_3x.pkl"
+  WEIGHTS: "coco_instance_segmentation/R_50_C4_3x.ckpt"
+MODEL:
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

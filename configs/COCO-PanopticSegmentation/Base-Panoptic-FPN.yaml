@@ -1,0 +1,10 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+MODEL:
+  META_ARCHITECTURE: "PanopticFPN"
+  MASK_ON: True
+  SEM_SEG_HEAD:
+    LOSS_WEIGHT: 0.5
+DATALOADER:
+  LOAD_SEMANTIC_MASKS: True
+EVAL:
+  METRICS: ("panoptic_segmentation_metrics",)

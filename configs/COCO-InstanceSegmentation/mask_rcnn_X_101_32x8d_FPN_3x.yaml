@@ -1,0 +1,16 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_instance_segmentation/X_101_32x8d_3x.pkl"
+  WEIGHTS: "coco_instance_segmentation/X_101_32x8d_3x.ckpt"
+MODEL:
+  MASK_ON: True
+  PIXEL_STD: [57.375, 57.120, 58.395]
+  RESNETS:
+    STRIDE_IN_1X1: False  # this is a C2 model
+    NUM_GROUPS: 32
+    WIDTH_PER_GROUP: 8
+    DEPTH: 101
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000
+  IMS_PER_GPU: 1

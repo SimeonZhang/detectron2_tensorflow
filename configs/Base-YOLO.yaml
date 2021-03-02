@@ -1,0 +1,43 @@
+MODEL:
+  MASK_ON: False
+  INPUT_FORMAT: "RGB"
+  PIXEL_MEAN: [0., 0., 0.]
+  PIXEL_STD: [255., 255., 255.]
+  META_ARCHITECTURE: "SingleStageDetector"
+  BACKBONE:
+    NAME: "DarkNet53"
+  RESNETS:
+    OUT_FEATURES: ["res3", "res4", "res5"]
+    STEM_OUT_CHANNELS: 32
+    RES2_OUT_CHANNELS: 64
+  NECK:
+    NAME: "YOLOV4"
+    IN_FEATURES: ["res3", "res4", "res5"]
+    NORM: "BN"
+    ACTIVATION: "leaky_relu"
+    OUT_CHANNELS: 128
+  ANCHOR_GENERATOR:
+    NAME: "YOLOAnchorGenerator"
+    SIZES: [
+      [[12, 16], [19, 36], [40, 28]],
+      [[36, 75], [76, 55], [72, 146]],
+      [[142, 110], [192, 243], [459, 410]]
+    ]  # One size for each in feature map
+  SINGLE_STAGE_HEAD:
+    NAME: "YOLOV4Head"
+    IN_FEATURES: ["p3", "p4", "p5"]
+    IOU_THRESHOLDS: [0.5]
+    IOU_LABELS: [1, -1]
+SOLVER:
+  IMS_PER_GPU: 4
+  IMS_PER_BATCH: 32
+  BASE_LR: 0.00065
+  STEPS: (80000, 90000)
+  MAX_ITER: 101000
+  WEIGHT_DECAY: 0.0005
+TRANSFORM:
+  RESIZE:
+    MAX_SIZE_TRAIN: 608
+    MIN_SIZE_TRAIN: (608,)
+    MAX_SIZE_TEST: 608
+    MIN_SIZE_TEST: 608

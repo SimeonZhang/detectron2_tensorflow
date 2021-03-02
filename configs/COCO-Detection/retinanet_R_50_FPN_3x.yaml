@@ -1,0 +1,10 @@
+_BASE_: "../Base-RetinaNet.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_object_detection/Retina_R_50_3x.pkl"
+  WEIGHTS: "coco_object_detection/Retina_R_50_3x.ckpt"
+MODEL:
+  RESNETS:
+    DEPTH: 50
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

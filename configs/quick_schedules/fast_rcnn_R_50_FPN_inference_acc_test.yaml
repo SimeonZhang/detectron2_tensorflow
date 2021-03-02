@@ -1,0 +1,7 @@
+_BASE_: "../COCO-Detection/fast_rcnn_R_50_FPN_1x.yaml"
+MODEL:
+  WEIGHTS: ""
+DATASETS:
+  TEST: ("coco_2017_val_100",)
+TEST:
+  EXPECTED_RESULTS: [["bbox", "AP", 45.70, 0.02]]

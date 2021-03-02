@@ -1,0 +1,10 @@
+_BASE_: "Base-Panoptic-FPN.yaml"
+MODEL:
+  RESNETS:
+    DEPTH: 101
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_panoptic_segmentation/R_101_FPN_3x.pkl"
+  WEIGHTS: "coco_panoptic_segmentation/R_101_FPN_3x.ckpt"
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

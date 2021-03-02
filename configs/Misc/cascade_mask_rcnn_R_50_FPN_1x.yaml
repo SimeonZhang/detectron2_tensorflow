@@ -1,0 +1,14 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/misc/cascade_R_50_1x.pkl"
+  WEIGHTS: "misc/cascade_R_50_1x.ckpt"
+MODEL:
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+  ROI_HEADS:
+    NAME: CascadeROIHeads
+  ROI_BOX_HEAD:
+    CLS_AGNOSTIC_BBOX_REG: True
+  RPN:
+    POST_NMS_TOPK_TRAIN: 2000

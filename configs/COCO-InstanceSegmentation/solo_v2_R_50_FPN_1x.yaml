@@ -1,0 +1,7 @@
+_BASE_: "../Base-SOLO.yaml"
+PRETRAINS:
+  MMDET: "solo/SOLO_v2_R_50_FPN_1x.pkl"
+  WEIGHTS: "coco_instance_segmentation/SOLO_v2_R_50_FPN_1x.ckpt"
+MODEL:
+  RESNETS:
+    DEPTH: 50

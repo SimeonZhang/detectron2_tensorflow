@@ -1,0 +1,7 @@
+_BASE_: "Base-Panoptic-FPN.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_panoptic_segmentation/R_50_FPN_1x.pkl"
+  WEIGHTS: "coco_panoptic_segmentation/R_50_FPN_1x.ckpt"
+MODEL:
+  RESNETS:
+    DEPTH: 50

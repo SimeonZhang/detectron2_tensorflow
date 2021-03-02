@@ -1,0 +1,19 @@
+_BASE_: "../Base-RCNN-C4.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_object_detection/R_101_C4_3x.pkl"
+  WEIGHTS: "coco_object_detection/R_101_C4_3x.ckpt"
+MODEL:
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 101
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000
+LOGS:
+  ROOT_DIR: "/root/private/test_r101_c4"
+EVAL:
+  NUM_EVAL: 10
+  MAX_EXAMPLE_TO_DRAW: 10
+  MIN_VISUALIZATION_SCORE_THRESH: 0.5
+SOLVER:
+  IMS_PER_GPU: 2

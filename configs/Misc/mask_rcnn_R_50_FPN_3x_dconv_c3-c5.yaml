@@ -1,0 +1,13 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/misc/mask_R_50_FPN_3x_dconv_c3-c5.pkl"
+  WEIGHTS: "misc/mask_R_50_FPN_3x_dconv_c3-c5.ckpt"
+MODEL:
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+    DEFORM_ON_PER_STAGE: [False, True, True, True] # on Res3,Res4,Res5
+    DEFORM_MODULATED: False
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

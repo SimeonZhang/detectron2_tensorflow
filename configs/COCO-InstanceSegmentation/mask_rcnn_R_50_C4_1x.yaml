@@ -1,0 +1,8 @@
+_BASE_: "../Base-RCNN-C4.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_instance_segmentation/R_50_C4_1x.pkl"
+  WEIGHTS: "coco_instance_segmentation/R_50_C4_1x.ckpt"
+MODEL:
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50

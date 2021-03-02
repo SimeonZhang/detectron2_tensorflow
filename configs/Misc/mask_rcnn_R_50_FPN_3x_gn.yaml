@@ -1,0 +1,23 @@
+_BASE_: "../Base-RCNN-FPN.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/misc/mask_R_50_FPN_3x_gn.pkl"
+  WEIGHTS: "misc/mask_R_50_FPN_3x_gn.ckpt"
+MODEL:
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+    NORM: "GN"
+    STRIDE_IN_1X1: False
+  NECK:
+    NORM: "GN"
+  ROI_BOX_HEAD:
+    NAME: "FastRCNNConvFCHead"
+    NUM_CONV: 4
+    NUM_FC: 1
+    NORM: "GN"
+  ROI_MASK_HEAD:
+    NORM: "GN"
+SOLVER:
+  # 3x schedule
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

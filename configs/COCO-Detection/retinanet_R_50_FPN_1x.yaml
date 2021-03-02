@@ -1,0 +1,7 @@
+_BASE_: "../Base-RetinaNet.yaml"
+PRETRAINS:
+  DETECTRON2: "detectron2/coco_object_detection/Retina_R_50_1x.pkl"
+  WEIGHTS: "coco_object_detection/Retina_R_50_1x.ckpt"
+MODEL:
+  RESNETS:
+    DEPTH: 50

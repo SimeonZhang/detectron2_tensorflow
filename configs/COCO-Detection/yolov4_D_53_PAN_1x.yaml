@@ -1,0 +1,4 @@
+_BASE_: "../Base-YOLO.yaml"
+PRETRAINS:
+  DARKNET: "darknet/yolov4.weights"
+  WEIGHTS: "coco_object_detection/yolov4.ckpt"
